@@ -14,7 +14,7 @@ def render_page1():
 def render_page2():
     return render_template('page2.html')
   
- @app.route("/p3")
+@app.route("/p3")
 def render_page3():
     return render_template('page3.html')
     
