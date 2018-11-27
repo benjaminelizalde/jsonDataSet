@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+{%extends "layout.html"%}
+{% set active_page = "home"%}
+{%block title%}Home{%endblock%}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-</head>
-<body>
+{%block content%}
 
 <h2>Disease Table</h2>
 
@@ -77,5 +60,4 @@ tr:nth-child(even) {
 <p>This table shows the disease names that are in the json file. It shows the year the diseases started and ended(ACCORDING TO THE JSON FILE). The notes come from various sources. Mostly the CDC.
 This json files data only goes up 2011. Although some of the diseases end in the middle of the json file in some cases this was because there were less than ten cases a year. </p>
 
-</body>
-</html>
+{%endblock%}
