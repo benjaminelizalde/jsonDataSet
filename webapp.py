@@ -10,13 +10,13 @@ with open('health.json') as health_data:
 @app.route("/")
 def render_main():
     return render_template('home.html')
-
 @app.route("/p1")
 def render_page1():
-    if "States" not in request.args:
-        return render_template('page1.html', disease = disease_lifetime())
+    if "diseases" not in request.args:
+        chosen_disease = request.args["diseasesS"]   
+        return render_template('page1.html', disease = disease_lifetime(), start = disease_start(chosen_disease))
     else:
-        return render_template('page1.html', disease = disease_lifetime(), start = start(request.args["disease"]) )
+        return render_template('page1.html', disease = disease_lifetime(), start = disease_start(request.args["disease"]) )
 
 @app.route("/p2")
 def render_page2():
@@ -31,20 +31,21 @@ def render_page3():
     
 def disease_lifetime():
     listOfDiseases = []
-     for x in diseases:
+    for x in diseases:
         if not x["disease"] in listOfDiseases:
             listOfDiseases.append(x["disease"])
-     start = ""
-     for x in listOfDiseases:
+    start = ""
+    for x in listOfDiseases:
         start = start +  Markup("<option value=\"" + x + "\">" + x + "</option>")
-     return start 
+    return start 
     
 
     
-def     first = counties[0]["Age"]["Percent Under 18 Years"]
-    for county in counties:
-        if county["Age"]["Percent Under 18 Years"] < first:
-            first = county["Age"]["Percent Under 18 Years"]
+def  disease_start(chosen_disease):   
+    first = 3000
+    for x in diseases:
+        if x["year"] < first:
+            first = x["year"]
     return first
     
  
