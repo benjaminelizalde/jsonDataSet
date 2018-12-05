@@ -12,10 +12,11 @@ def render_main():
     return render_template('home.html')
 @app.route("/p1")
 def render_page1():
-    if "diseases" not in request.args:
-        chosen_disease = request.args["diseasesS"]   
-        return render_template('page1.html', disease = disease_lifetime(), start = disease_start(chosen_disease))
+    if "disease" not in request.args:
+          
+        return render_template('page1.html', disease = disease_lifetime())
     else:
+        chosen_disease = request.args["disease"]
         return render_template('page1.html', disease = disease_lifetime(), start = disease_start(request.args["disease"]) )
 
 @app.route("/p2")

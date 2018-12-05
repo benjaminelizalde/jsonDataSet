@@ -5,7 +5,23 @@
 {%block content%}
 
 <h2>Disease Table</h2>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 <table>
   <tr>
     <th>Disease</th>
@@ -28,7 +44,7 @@
   <tr>
     <td>Polio</td>
     <td>1914-1968</td>
-    <td>Eliminated in 1979(</td>
+    <td>Eliminated in 1979</td>
 	<td>https://www.historyofvaccines.org/timeline/polio</td>
   </tr>
   <tr>

@@ -1,1 +1,29 @@
+{%extends "layout.html"%}
+{% set active_page = "p2"%}
+{%block title%}Page 2{%endblock%}
+
+{%block content%}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<title>Page Title</title>
+</head>
+<body>
+
+<form action="/p1">
+  <select name="disease">
+  {{ disease }}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+<p>
+Years that the disease existed:
+{{start}}
+</p>
+
+</body>
+</html>
+{%endblock%}
 
