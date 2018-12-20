@@ -18,10 +18,10 @@ def render_page1():
     else:
         chosen_disease = request.args["disease"]
         return render_template('page1.html', disease = disease_lifetime(), startlast = str(disease_start(chosen_disease)) +"-"+ str(disease_end(chosen_disease)))
-
+        
 @app.route("/p2")
 def render_page2():
-    return render_template('page2.html')
+    return render_template('page2.html', Measles = measles_infectivity(),Polio = polio_infectivity(),Smallpox = smallpox_infectivity(), Pertuissis = pertuissis_infectivity())
   
 @app.route("/p3")
 def render_page3():
@@ -56,6 +56,79 @@ def  disease_end(chosen_disease):
         if x["year"] > last and chosen_disease == x["disease"]:
             last = x["year"]
     return last
+
+def measles_infectivity():
+    increase = ""
+    average = 0
+    all = {}
+    
+    for disease in diseases:
+        if disease["disease"]== "MEASLES":
+            if disease["year"] in all:
+                all[disease["year"]] += disease["increase"]
+            else:
+                all[disease["year"]] = disease["increase"]
+    for x in all:
+        all[x] = all[x]/50
+     
+        increase = increase + Markup("{ x: new Date("+(str(x))+", 00), y:"+ str(all[x])+" },")
+    return increase
+            
+        
+
+def polio_infectivity():
+    increase = ""
+    average = 0
+    all = {}
+    
+    for disease in diseases:
+        if disease["disease"]== "POLIO":
+            if disease["year"] in all:
+                all[disease["year"]] += disease["increase"]
+            else:
+                all[disease["year"]] = disease["increase"]
+    for x in all:
+        all[x] = all[x]/50
+     
+        increase = increase + Markup("{ x: new Date("+(str(x))+", 00), y:"+ str(all[x])+" },")
+    return increase
+            
+        
+def smallpox_infectivity():
+    increase = ""
+    average = 0
+    all = {}
+    
+    for disease in diseases:
+        if disease["disease"]== "SMALLPOX":
+            if disease["year"] in all:
+                all[disease["year"]] += disease["increase"]
+            else:
+                all[disease["year"]] = disease["increase"]
+    for x in all:
+        all[x] = all[x]/50
+     
+        increase = increase + Markup("{ x: new Date("+(str(x))+", 00), y:"+ str(all[x])+" },")
+    return increase    
+
+def pertuissis_infectivity():
+    increase = ""
+    average = 0
+    all = {}
+    
+    for disease in diseases:
+        if disease["disease"]== "PERTUSSIS":
+            if disease["year"] in all:
+                all[disease["year"]] += disease["increase"]
+            else:
+                all[disease["year"]] = disease["increase"]
+    for x in all:
+        all[x] = all[x]/50
+     
+        increase = increase + Markup("{ x: new Date("+(str(x))+", 00), y:"+ str(all[x])+" },")
+    return increase    
+
+    
     
  
 if __name__=="__main__":
